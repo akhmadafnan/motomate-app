@@ -1,5 +1,7 @@
 <div align="center">
-  
+
+  <img src="icon.svg" width="100" height="100" alt="MotoMate Logo">
+
   <h1>MotoMate</h1>
   
   <p>
@@ -9,10 +11,10 @@
   <p>Aplikasi berbasis web (PWA) untuk mencatat riwayat servis, memantau kesehatan oli, dan merencanakan anggaran perawatan motor secara mandiri. Data tersimpan aman di memori HP tanpa perlu koneksi internet.</p>
   
   <p>
-    <a href="https://akhmadafnan.github.io/motomate-app/">View Demo</a> •
+    <a href="https://akhmadafnan.github.io/motomate-app/" target="_blank">View Demo</a> •
+    <a href="#tentang-aplikasi">Tentang Aplikasi</a> •
     <a href="#fitur-unggulan">Fitur</a> •
-    <a href="#teknologi">Teknologi</a> •
-    <a href="#cara-instalasi">Instalasi</a>
+    <a href="#teknologi">Teknologi</a>
   </p>
 
   <br>
@@ -26,7 +28,7 @@
 
 ---
 
-## 📝 Tentang Aplikasi
+## Tentang Aplikasi
 
 **MotoMate** adalah aplikasi web berbasis *Progressive Web App* (PWA) yang dirancang untuk membantu pemilik kendaraan memantau kesehatan motornya secara mandiri.
 
@@ -34,28 +36,28 @@ Aplikasi ini dibangun karena permasalahan umum: **lupa kapan terakhir ganti oli*
 
 Proyek ini dikhususkan untuk spesifikasi **Yamaha Jupiter Z (Burhan)**, namun struktur datanya fleksibel untuk motor jenis lain.
 
-## ✨ Fitur Unggulan
+## Fitur Unggulan
 
-### 1. 🚦 Dashboard Pintar
+### 1. Dashboard Pintar
 * **Visualisasi Kesehatan Oli:** Indikator warna (Hijau/Kuning/Merah) yang berubah otomatis berdasarkan selisih KM servis terakhir.
 * **Odometer Tracker:** Input penambahan jarak tempuh (Trip) dengan akumulasi otomatis ke total odometer.
 * **Edit Mode:** Kemudahan koreksi angka total odometer jika terjadi kesalahan input.
 
-### 2. 📋 Service Planner (Perencanaan)
+### 2. Service Planner (Perencanaan)
 * **Estimasi Biaya:** Memilih *sparepart* dari katalog untuk melihat estimasi total biaya sebelum ke bengkel.
 * **Harga Fleksibel:** Harga part bisa diedit manual (input) sesuai harga realisasi di bengkel (nota asli).
 
-### 3. 📅 Riwayat Servis (Digital Logbook)
+### 3. Riwayat Servis (Digital Logbook)
 * **Pencatatan Detail:** Menyimpan tanggal, KM saat servis, item yang diganti, dan total biaya.
 * **Manajemen Data:** Fitur hapus riwayat (delete) untuk menjaga keakuratan data.
 * **Data Persistence:** Semua data tersimpan aman di memori perangkat (*LocalStorage*), sehingga data tidak hilang saat browser ditutup.
 
-### 4. 📱 Mobile Experience
+### 4. Mobile Experience
 * **Installable:** Dapat diinstal ke Home Screen HP Android/iOS layaknya aplikasi native.
 * **Fullscreen Mode:** Tampilan aplikasi penuh tanpa *address bar* browser.
 * **Offline Ready:** Arsitektur statis yang ringan dan cepat.
 
-## 🛠 Teknologi
+## Teknologi
 
 Aplikasi ini dibangun dengan pendekatan *Vanilla* (Murni) untuk performa maksimal dan ukuran sekecil mungkin:
 
@@ -65,7 +67,7 @@ Aplikasi ini dibangun dengan pendekatan *Vanilla* (Murni) untuk performa maksima
 * **JSON:** Manajemen data statis untuk katalog *sparepart* dan profil motor.
 * **PWA (Manifest & Service Worker):** Dukungan instalasi aplikasi web.
 
-## 📂 Struktur Proyek
+## Struktur Proyek
 
 ```text
 /
@@ -79,7 +81,3 @@ Aplikasi ini dibangun dengan pendekatan *Vanilla* (Murni) untuk performa maksima
 ├── README.md            # Dokumentasi Proyek
 ├── script.js            # Logika Utama (CRUD & Kalkulasi)
 └── style.css            # Styling & Responsive Design
-
-<p align="center">
-  Dibuat oleh <a href="https://www.instagram.com/afnanf.id" target="_blank">@afnanf.id</a>
-</p>
