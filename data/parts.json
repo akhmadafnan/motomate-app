@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "nama": "Ganti Oli Mesin (Yamalube Silver / Enduro 4T)",
+    "harga": 45000,
+    "kategori": "Rutin"
+  },
+  {
+    "id": 2,
+    "nama": "Ganti Busi (NGK C6HSA / Denso)",
+    "harga": 15000,
+    "kategori": "Rutin"
+  },
+  {
+    "id": 3,
+    "nama": "Servis Ringan + Bersihkan Karburator",
+    "harga": 40000,
+    "kategori": "Jasa"
+  },
+  {
+    "id": 4,
+    "nama": "Kampas Rem Depan (Cakram)",
+    "harga": 45000,
+    "kategori": "Wear & Tear"
+  },
+  {
+    "id": 5,
+    "nama": "Kampas Rem Belakang (Tromol)",
+    "harga": 40000,
+    "kategori": "Wear & Tear"
+  },
+  {
+    "id": 6,
+    "nama": "Ganti Gear Set (Rantai + Gir Depan Belakang)",
+    "harga": 185000,
+    "kategori": "Major"
+  },
+  {
+    "id": 7,
+    "nama": "Filter Udara",
+    "harga": 35000,
+    "kategori": "Rutin"
+  },
+  {
+    "id": 8,
+    "nama": "Ganti Ban Luar Depan (Ring 17)",
+    "harga": 140000,
+    "kategori": "Major"
+  },
+  {
+    "id": 9,
+    "nama": "Ganti Ban Luar Belakang (Ring 17)",
+    "harga": 175000,
+    "kategori": "Major"
+  },
+  {
+    "id": 10,
+    "nama": "Aki / Accu (Tipe Basah/Kering)",
+    "harga": 165000,
+    "kategori": "Major"
+  }
+]

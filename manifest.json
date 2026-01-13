@@ -1,0 +1,15 @@
+{
+  "name": "MotoMate Jupiter Z",
+  "short_name": "MotoMate",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0052D4",
+  "theme_color": "#0052D4",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

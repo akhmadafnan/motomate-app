@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MotoMate - Jupiter Z</title>
+
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="alternate icon" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0052D4">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Tambahan Khusus Dashboard */
+        .dashboard-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-top: -30px;
+            /* Overlap ke header */
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .odo-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .odo-input {
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 1.2rem;
+            width: 120px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .alert-box {
+            background: #ffeaa7;
+            color: #d35400;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+            /* Default sembunyi */
+            margin-top: 10px;
+        }
+
+        .history-item {
+            border-left: 4px solid #0052D4;
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .history-date {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* Tab Menu Sederhana */
+        .nav-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .nav-link {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #aaa;
+        }
+
+        .nav-link.active {
+            color: #0052D4;
+            border-bottom: 2px solid #0052D4;
+        }
+
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        /* Style untuk Input Harga Manual */
+        .price-wrapper {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .price-label {
+            font-size: 0.8rem;
+            color: #888;
+            margin-right: 5px;
+        }
+
+        .part-price-input {
+            border: none;
+            background: transparent;
+            width: 70px;
+            /* Lebar pas untuk angka */
+            text-align: right;
+            font-weight: bold;
+            color: #0052D4;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        /* Hilangkan panah spinner di input number browser */
+        .part-price-input::-webkit-outer-spin-button,
+        .part-price-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Style tambahan untuk tombol delete di history */
+        .history-item {
+            position: relative;
+            /* Penting agar tombol menginduk ke kotak ini */
+            background: #fff;
+            padding: 15px;
+            padding-right: 80px;
+            /* <--- PENTING: Jarak kanan diperlebar (dari 40px jadi 80px) */
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #0052D4;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-delete-history {
+            position: absolute;
+            top: 12px;
+            /* Jarak dari atas */
+            right: 12px;
+            /* Jarak dari kanan */
+            background: #ffebee;
+            color: #c0392b;
+            border: 1px solid #ffcdd2;
+            /* Tambah border tipis biar tegas */
+            border-radius: 6px;
+            padding: 4px 10px;
+            /* Perkecil padding tombol biar ramping */
+            font-size: 0.7rem;
+            /* Perkecil huruf */
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            /* Pastikan tombol di layer paling atas */
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .btn-delete-history:hover {
+            background: #ffcdd2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div class="container">
+            <h1 id="motor-model">Loading...</h1>
+            <p id="motor-plat">...</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="dashboard-card">
+
+            <div style="margin-bottom: 20px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <small style="color:#888">Kesehatan Oli</small>
+                    <small id="oil-status-text" style="font-weight:bold; color:#27ae60">Aman</small>
+                </div>
+                <div
+                    style="height: 12px; background: #f0f0f0; border-radius: 6px; overflow: hidden; position: relative;">
+                    <div id="oil-progress"
+                        style="width: 0%; height: 100%; background: #27ae60; transition: width 0.5s ease-in-out;"></div>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:#ccc; margin-top:5px;">
+                    <span>Baru Ganti</span>
+                    <span>Waspada</span>
+                    <span>Ganti!</span>
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+
+                <div>
+                    <div style="font-size: 0.8rem; color: #888;">Total Odometer</div>
+                    <div style="display:flex; align-items:center; gap:5px;">
+                        <div style="font-size: 1.8rem; font-weight: 800; color: #333;">
+                            <span id="display-total-odo">0</span> <span style="font-size:1rem; color:#888;">KM</span>
+                        </div>
+                        <button onclick="editOdometer()"
+                            style="background:none; border:none; cursor:pointer; font-size:1rem; opacity:0.5;"
+                            title="Edit/Reset Angka Total">
+                            ✏️
+                        </button>
+                    </div>
+                </div>
+
+                <div style="text-align: right;">
+                    <div style="font-size: 0.7rem; color: #aaa; margin-bottom: 5px;">Tambah Perjalanan</div>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="number" id="input-trip" placeholder="+KM"
+                            style="width: 70px; padding: 8px; border: 2px solid #eee; border-radius: 8px; font-weight: bold; text-align: center;">
+                        <button onclick="addOdometer()"
+                            style="background: #0052D4; color: white; border: none; border-radius: 8px; width: 40px; cursor: pointer; font-size: 1.2rem;">+</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <div class="nav-link active" onclick="switchTab('planner')">Rencana Servis</div>
+            <div class="nav-link" onclick="switchTab('history')">Riwayat</div>
+        </div>
+
+        <div id="tab-planner" class="section-content active">
+            <p class="subtitle">Centang part yang akan diganti:</p>
+            <div id="parts-list" class="parts-container">
+            </div>
+        </div>
+
+        <div id="tab-history" class="section-content">
+            <p class="subtitle">Catatan servis sebelumnya:</p>
+            <div id="history-list">
+                <p style="text-align:center; color:#ccc; margin-top:20px">Belum ada riwayat servis.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="total-bar">
+        <div class="container total-flex">
+            <div class="total-text">
+                <small>Estimasi / Total</small>
+                <div class="price" id="total-price">Rp 0</div>
+            </div>
+            <button class="btn-save" onclick="finishService()">Selesai Servis</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

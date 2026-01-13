@@ -1,0 +1,95 @@
+/* Reset Dasar */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    padding-bottom: 100px; /* Ruang untuk sticky footer */
+}
+
+/* Container agar rapi di tengah */
+.container {
+    max-width: 600px; /* Lebar maksimal kayak HP */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Style */
+.app-header {
+    background: linear-gradient(135deg, #0052D4, #4364F7); /* Warna Biru Yamaha */
+    color: white;
+    padding: 30px 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.app-header h1 { font-size: 1.5rem; margin-bottom: 5px; }
+.app-header p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 10px; }
+.specs-badge {
+    background: rgba(255,255,255,0.2);
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+/* Content Style */
+.section-title { font-size: 1.2rem; margin-bottom: 5px; }
+.subtitle { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+
+/* Card Item Style (Agar enak diklik) */
+.part-item {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+/* Efek saat dipilih */
+.part-item.selected {
+    border-color: #0052D4;
+    background-color: #f0f7ff;
+}
+
+.part-info h4 { font-size: 1rem; margin-bottom: 3px; }
+.part-info span { font-size: 0.8rem; color: #888; background: #eee; padding: 2px 6px; border-radius: 4px; }
+.part-price { font-weight: bold; color: #0052D4; }
+
+/* Sembunyikan checkbox asli, kita pakai styling card */
+.part-checkbox { display: none; }
+
+/* Sticky Footer (Total Harga melayang di bawah) */
+.total-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 15px 0;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+.total-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.total-text small { color: #888; font-size: 0.8rem; }
+.total-text .price { font-size: 1.3rem; font-weight: 700; color: #222; }
+.btn-save {
+    background: #0052D4;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}

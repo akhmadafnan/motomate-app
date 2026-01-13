@@ -1,0 +1,16 @@
+{
+  "info": {
+    "merk": "Yamaha",
+    "model": "Jupiter Z (Burhan)",
+    "tahun": "2008",
+    "plat": "N 1234 AB",
+    "warna": "Biru Silver"
+  },
+  "spesifikasi": {
+    "oli_mesin": "800ml (0.8L)",
+    "busi": "NGK C6HSA",
+    "ban_depan": "70/90-17",
+    "ban_belakang": "80/90-17",
+    "tekanan_ban": "Depan 29psi / Belakang 33psi"
+  }
+}
